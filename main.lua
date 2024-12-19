@@ -92,7 +92,7 @@ function love.draw()
     ball:draw()
 
     -- debug stuff
-    if debug == true then
+    if DEBUG == true then
         love.graphics.print(string.format("ball.x: %s", ball.x), 10, 10)
         love.graphics.print(string.format("ball.y: %s", ball.y), 10, 20)
         love.graphics.print(string.format("ball.dx: %s", ball.dx), 10, 30)
