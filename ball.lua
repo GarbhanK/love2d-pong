@@ -1,35 +1,35 @@
+local love = require('love')
 
 
-bounce_sfx = love.audio.newSource("audio/SOPHIE_snare_15.wav", "static")
+BOUNCE_SFX = love.audio.newSource("audio/SOPHIE_snare_15.wav", "static")
 
-ball = {}
-ball.x = love.graphics.getWidth()/2
-ball.y = love.graphics.getHeight()/2
-ball.radius = 10
-ball.dx = math.random(2) == 1 and 100 or -100
-ball.dy = math.random(-50, 50)
-ball.speed = 2.0
+Ball = {}
+Ball.x = love.graphics.getWidth() / 2
+Ball.y = love.graphics.getHeight() / 2
+Ball.radius = 10
+Ball.dx = math.random(2) == 1 and 100 or -100
+Ball.dy = math.random(-50, 50)
+Ball.speed = 2.0
 
-function ball:reset()
-    self.x = love.graphics.getWidth()/2
-    self.y = love.graphics.getHeight()/2
+function Ball:reset()
+    self.x = love.graphics.getWidth() / 2
+    self.y = love.graphics.getHeight() / 2
     self.radius = 10
     self.dx = math.random(2) == 1 and 100 or -100
     self.dy = math.random(-50, 50)
 end
 
-function ball:bounce(x, y)
+function Ball:bounce(x, y)
     self.dx = x * self.dx
     self.dy = y * self.dy
-    love.audio.play(bounce_sfx)
+    love.audio.play(BOUNCE_SFX)
 
     if self.speed <= MAX_BALL_SPEED then
         self.speed = self.speed + 0.2
     end
 end
 
-function ball:draw()
+function Ball:draw()
     love.graphics.setColor(255, 255, 255)
     love.graphics.circle("fill", self.x, self.y, self.radius)
 end
-
